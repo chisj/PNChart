@@ -69,6 +69,7 @@
     _shouldHighlightSectorOnTouch = YES;
     _enableMultipleSelection = NO;
     _hideValues = NO;
+    _showPercentageValueDecimalPlaces = 0;
     
     [super setupDefaultValues];
     [self loadDefault];
@@ -155,7 +156,7 @@
     if (self.showAbsoluteValues) {
         titleValue = [NSString stringWithFormat:@"%.0f",currentDataItem.value];
     }else{
-        titleValue = [NSString stringWithFormat:@"%.0f%%",[self ratioForItemAtIndex:index] * 100];
+        titleValue = [NSString stringWithFormat:@"%.*f%%",self.showPercentageValueDecimalPlaces, [self ratioForItemAtIndex:index] * 100];
     }
     
     if (self.hideValues)
